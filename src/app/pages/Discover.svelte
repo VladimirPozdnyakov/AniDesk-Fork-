@@ -72,7 +72,7 @@
 <MetaInfo subTitle="Обзор" />
 
 {#await getDiscover()}
-    <div class="skeleton-container">
+    <div class="skeleton-discover-wrapper">
         <div class="interesting-slider-wrapper">
             <div class="spacer"></div>
             <div class="interesting flex-row">
@@ -91,7 +91,6 @@
                 <span class="main-title">Сейчас смотрят</span>
             </div>
             <div class="anime-row flex-row">
-                <SkeletonColumnCard />
                 <SkeletonColumnCard />
                 <SkeletonColumnCard />
                 <SkeletonColumnCard />
@@ -210,131 +209,11 @@
         width: 100%;
     }
 
-    .current-view {
-        justify-items: center;
-        margin-top: 10px;
-        margin-left: 20px;
-        margin-bottom: 20px;
-    }
-
-    .title-margin {
-        margin-left: 20px;
-    }
-
-    .discussing {
-        border-bottom: 3px solid var(--alt-background-color);
-    }
-
-    .anime-column-row {
-        width: 100%;
-        margin-bottom: 20px;
-        margin-top: 10px;
-        border-bottom: 3px solid var(--alt-background-color);
-        height: max-content;
-    }
-
-    .card {
-        margin-left: 0px;
-        margin-right: auto;
-    }
-
-    .card:last-child {
-        margin-right: 0px;
-    }
-
-    .container {
-        align-items: center;
-        margin-top: 25px;
-        margin-bottom: 25px;
-        max-width: var(--max-width, 1609px);
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .main-title {
-        font-size: 28px;
-        font-weight: 500;
-        color: var(--main-text-color);
-    }
-
-    .nav {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 10;
-        font-size: 2rem;
-        width: 40px;
-        height: 40px;
-        background-color: var(--alt-background-color);
-        border: none;
-        cursor: pointer;
-        border-radius: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-bottom: 5px;
-    }
-
-    .nav.prev {
-        left: 60px;
-    }
-    .nav.next {
-        right: 60px;
-    }
-
-    .comments-info {
-        background-color: var(--alt-background-color);
-        color: var(--main-text-color);
-        border-radius: 6px;
-        padding-left: 8px;
-        padding-right: 8px;
-        padding-top: 4px;
-        padding-bottom: 4px;
-        margin-bottom: 5px;
-        font-size: 14px;
-        display: flex;
-        width: fit-content;
-    }
-
-    .interesting-item {
-        flex: 0 0 auto;
-        scroll-snap-align: center;
-        justify-content: flex-start;
-        display: flex;
-    }
-
-    .interesting-item-title {
-        font-size: var(--anime-full-row-title-size);
-        font-weight: var(--anime-full-row-title-weight);
-        color: var(--main-text-color);
-        margin-bottom: 5px;
-        margin-top: 5px;
-    }
-
-    .interesting-item-description {
-        font-size: var(--anime-full-row-description-size);
-        color: var(--third-text-color);
-        line-height: var(--anime-full-row-description-line-height);
-        font-weight: var(--anime-full-row-description-weight);
-    }
-
-    .interesting-item:first-child {
-        margin-left: 20px;
-    }
-
-    .interesting-item:last-child {
-        margin-right: 20px;
-    }
-
-    .skeleton-container {
+    .skeleton-discover-wrapper {
         display: flex;
         flex-direction: column;
         gap: 20px;
         margin: 20px;
         padding-bottom: 25px;
-    }
-
-    .interesting-slider-wrapper {
-        position: relative;
     }
 </style>
