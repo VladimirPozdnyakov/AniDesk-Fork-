@@ -12,6 +12,7 @@
     let total_count,
         firstData_count = null;
     let allData = [];
+    let isLoadingMore = false;
     let firstData = args?.id || args.typeBookmark != 0
         ? anixApi.profile.getBookmarks({
               type: args.typeBookmark,
@@ -60,6 +61,7 @@
 
         allData = allData.concat(data.content);
         updateInfo = false;
+        isLoadingMore = false;
     }
 
     function setTotalCount(count) {
@@ -77,6 +79,7 @@
         args.typeBookmark = type;
         page = 0;
         allData = [];
+        isLoadingMore = false;
         filterQuery = "";
         switch (type) {
             case 0:
@@ -108,9 +111,11 @@
         if (
             e.srcElement.scrollTop >= e.srcElement.scrollHeight - 2000 &&
             !updateInfo &&
-            total_count > allData.length + firstData_count
+            total_count > allData.length + firstData_count &&
+            !isLoadingMore
         ) {
             updateInfo = true;
+            isLoadingMore = true;
             page++;
             await getMainPage();
         }
@@ -237,6 +242,11 @@
             {#each getFilteredData(Releases.content, filterQuery) as Release}
                 <AnimeRowItem anime={Release} inModal={args?.isModal} />
             {/each}
+            {#if isLoadingMore}
+                {#each { length: 3 } as _}
+                    <SkeletonAnimeCard />
+                {/each}
+            {/if}
             {#each getFilteredData(allData, filterQuery) as Release}
                 <AnimeRowItem anime={Release} inModal={args?.isModal} />
             {/each}

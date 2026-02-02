@@ -17,6 +17,7 @@
     let updateInfo = false;
     let modalSubTitle = null;
     let showAuthModal = false;
+    let isLoadingMore = false;
 
     let isFavorite = false;
     let favoriteCount = 0;
@@ -43,6 +44,7 @@
         );
         allData = allData.concat(data.content);
         updateInfo = false;
+        isLoadingMore = false;
     }
 
     function setFavorite(fav) {
@@ -220,6 +222,11 @@
             {#each c.releases.content as release}
                 <AnimeFullRowCard anime={release} />
             {/each}
+            {#if isLoadingMore}
+                {#each { length: 3 } as _}
+                    <SkeletonAnimeCard />
+                {/each}
+            {/if}
             {#each allData as release}
                 <AnimeFullRowCard anime={release} />
             {/each}
