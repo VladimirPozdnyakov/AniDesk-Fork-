@@ -13,8 +13,10 @@
 
     let timeout, relatedModalSubTitle, searchBoxElement;
     let relatedModalShowed = false;
+    let isSearching = false;
 
     function search() {
+        isSearching = false;
         firstData = anixApi.search.releases({
             query: args.query,
             searchBy: 0,
@@ -29,7 +31,8 @@
             clearTimeout(timeout);
         }
 
-        timeout = setTimeout(() => search(), 1500);
+        isSearching = true;
+        timeout = setTimeout(() => search(), 400);
     }
 
     if (args.query) {
@@ -38,7 +41,7 @@
 </script>
 
 <div class="search-top-div flex-row">
-    <div class="search-box flex-row">
+    <div class="search-box flex-row" class:searching={isSearching}>
         <input
             bind:this={searchBoxElement}
             class="search-box-text"
@@ -210,6 +213,11 @@
         width: 70%;
         border-width: 1px;
         z-index: 20;
+        transition: border-color 0.3s;
+    }
+
+    .search-box.searching {
+        border-color: var(--info-color);
     }
 
     .search-box-text {
