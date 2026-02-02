@@ -35,7 +35,6 @@ export default {
     input: 'src/app/app.js',
     output: {
         sourcemap: true,
-        stringArray: false,
         format: 'iife',
         name: 'anideskMain',
         file: 'public/build/bundle.js'
@@ -46,7 +45,12 @@ export default {
                 dev: !production
             },
             onwarn: (warning, handler) => {
-                if (warning.code.startsWith("a11y-")) return;
+                if (warning.code === "css_unused_selector") return;
+                if (warning.code === "a11y_click_events_have_key_events") return;
+                if (warning.code === "a11y_no_static_element_interactions") return;
+                if (warning.code === "a11y_consider_explicit_label") return;
+                if (warning.code === "a11y_img_redundant_alt") return;
+                if (warning.code === "a11y_no_noninteractive_tabindex") return;
                 handler(warning);
             }
         }),

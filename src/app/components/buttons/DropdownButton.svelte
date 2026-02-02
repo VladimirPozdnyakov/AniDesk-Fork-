@@ -8,7 +8,6 @@
     export let value = null;
     export let onChange = () => {};
     export let placeholder = "";
-    export let title = "";
     export let disabled = false;
     export let outsideElement = document;
 

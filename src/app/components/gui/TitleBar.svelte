@@ -23,6 +23,8 @@
         onclick={() => {
             backToHistory();
         }}
+        role="button"
+        tabindex="0"
     >
         <svg
             width="14"
@@ -41,6 +43,7 @@
     <button
         class="title-bar-minimize button-title-bar"
         onclick={titleBarAPI.minimize()}
+        aria-label="Свернуть"
         ><svg
             aria-hidden="true"
             role="img"
@@ -54,6 +57,7 @@
     <button
         class="title-bar-maximize button-title-bar"
         onclick={titleBarAPI.maximize()}
+        aria-label="Развернуть"
         ><svg
             aria-hidden="true"
             role="img"
@@ -73,6 +77,7 @@
     <button
         class="title-bar-close button-title-bar"
         onclick={titleBarAPI.close()}
+        aria-label="Закрыть"
         ><svg
             aria-hidden="true"
             role="img"

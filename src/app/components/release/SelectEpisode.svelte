@@ -8,7 +8,6 @@
     const dispatch = createEventDispatcher();
 
     export let args;
-    export let showed;
 
     let currentDubberId,
         currentSourceId,

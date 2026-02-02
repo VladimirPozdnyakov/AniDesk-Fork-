@@ -170,7 +170,6 @@
         tabindex="-1"
         class="releases-container flex-column"
         class:modal-content={args?.isModal}
-        id:modal-bookmark={args?.isModal}
     >
         <div class="flex-row releases-title">
             <span>Всего {total_count}</span>

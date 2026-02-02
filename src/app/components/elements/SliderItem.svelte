@@ -4,7 +4,6 @@
         width: 100,
         height: 100,
     };
-    export let skeletonZIndex = 0;
 
     let isLoaded = false;
     const id = window.crypto.randomUUID();

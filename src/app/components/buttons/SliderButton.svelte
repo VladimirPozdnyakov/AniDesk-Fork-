@@ -9,7 +9,7 @@
     }
 </script>
 
-<button class="slider-button" class:active={value} onclick={setSlider} disabled={disabled}></button>
+<button class="slider-button" class:active={value} onclick={setSlider} disabled={disabled} aria-label={value ? "Включено" : "Выключено"}></button>
 
 <style>
     .slider-button {

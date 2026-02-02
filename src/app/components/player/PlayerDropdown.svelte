@@ -64,7 +64,7 @@
             }}
         >
             {#if e.image}
-                <img class="element-image" class:image-circle={e.image.type === "default"} class:image-poster={e.image.type === "poster"} src={e.image.src} alt="Image" />
+                <img class="element-image" class:image-circle={e.image.type === "default"} class:image-poster={e.image.type === "poster"} src={e.image.src} alt={e.title || ""} />
             {/if}
             <div class="flex-column" class:top-align-container={e.image?.type == "poster"}>
                 <span class="element-title">{e.title}</span>
