@@ -1,7 +1,7 @@
 <script>
     import AnimeRowItem from "../components/elements/AnimeFullRowCard.svelte";
     import MetaInfo from "../components/gui/MetaInfo.svelte";
-    import Preloader from "../components/gui/Preloader.svelte";
+    import SkeletonAnimeCard from "../components/elements/SkeletonAnimeCard.svelte";
     import AuthPlaceholder from "./AuthPlaceholder.svelte";
     import DropdownButton from "../components/buttons/DropdownButton.svelte"
     import utils from "../utils";
@@ -225,7 +225,12 @@
             }}/>
         </div>
         {#await firstData}
-            <Preloader />
+            <div class="skeleton-container">
+                <SkeletonAnimeCard />
+                <SkeletonAnimeCard />
+                <SkeletonAnimeCard />
+                <SkeletonAnimeCard />
+            </div>
         {:then Releases}
             {setTotalCount(Releases.total_count)}
             {setFirstDataCount(Releases.content.length)}
@@ -273,6 +278,15 @@
         background-color: var(--background-color);
         z-index: 10;
         padding-bottom: 10px;
+        padding-top: 10px;
+    }
+
+    .skeleton-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin: 20px;
+        justify-content: center;
     }
 
     .releases-container {
