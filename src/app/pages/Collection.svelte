@@ -1,8 +1,8 @@
 <script>
-    import Preloader from "../components/gui/Preloader.svelte";
     import ProfileAvatar from "../components/profile/ProfileAvatar.svelte";
     import AnimeFullRowCard from "../components/elements/AnimeFullRowCard.svelte";
     import { Lottie } from "lottie-svelte";
+    import SkeletonAnimeCard from "../components/elements/SkeletonAnimeCard.svelte";
     import BaseMainButton from "../components/buttons/BaseMainButton.svelte";
     import Icon from "../components/elements/Icon.svelte";
     import BookmarkIcon from "../icons/favorite.svg";
@@ -81,7 +81,12 @@
 </script>
 
 {#await info}
-    <Preloader />
+    <div class="skeleton-container">
+        <SkeletonAnimeCard />
+        <SkeletonAnimeCard />
+        <SkeletonAnimeCard />
+        <SkeletonAnimeCard />
+    </div>
 {:then c}
     {#key modalSubTitle}
         <MetaInfo
@@ -298,6 +303,15 @@
         width: 880px;
         gap: 10px;
         margin-top: 15px;
+    }
+
+    .skeleton-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin: 20px;
+        padding-bottom: 25px;
+        justify-content: center;
     }
 
     .bookmark-btn {

@@ -1,5 +1,5 @@
 <script>
-    import Preloader from "../components/gui/Preloader.svelte";
+    import SkeletonAnimeCard from "../components/elements/SkeletonAnimeCard.svelte";
     import AnimePoster from "../components/release/AnimePoster.svelte";
     import AnimeFullRowCard from "../components/elements/AnimeFullRowCard.svelte";
     import AnimeColumnCard from "../components/elements/AnimeColumnCard.svelte";
@@ -70,7 +70,13 @@
 <MetaInfo subTitle="Обзор" />
 
 {#await getDiscover()}
-    <Preloader />
+    <div class="skeleton-container">
+        <SkeletonAnimeCard />
+        <SkeletonAnimeCard />
+        <SkeletonAnimeCard />
+        <SkeletonAnimeCard />
+        <SkeletonAnimeCard />
+    </div>
 {:then d}
     <div class="interesting-slider-wrapper">
         <button class="nav prev" onclick={sliderPrevClick}>‹</button>
@@ -290,5 +296,13 @@
 
     .interesting-item:last-child {
         margin-right: 20px;
+    }
+
+    .skeleton-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin: 20px;
+        padding-bottom: 25px;
     }
 </style>

@@ -1,9 +1,9 @@
 <script>
     import { localStorageWritable } from "@babichjacob/svelte-localstorage";
-    import Preloader from "../components/gui/Preloader.svelte";
     import ProfileAvatar from "../components/profile/ProfileAvatar.svelte";
     import Reputation from "../components/profile/Reputation.svelte";
     import { Lottie } from "lottie-svelte";
+    import SkeletonAnimeCard from "../components/elements/SkeletonAnimeCard.svelte";
     import BaseMainButton from "../components/buttons/BaseMainButton.svelte";
     import BaseAltButton from "../components/buttons/BaseAltButton.svelte";
     import AuthPlaceholder from "./AuthPlaceholder.svelte";
@@ -182,9 +182,19 @@
 
 {#if anixApi.client.token}
     <div class="friends-page flex-column">
-        {#await firstData}
-            <Preloader />
-        {:then fData}
+{#await firstData}
+    <div class="friends-skeleton-container">
+        {#each {length: 4} as _}
+            <div class="friend-skeleton flex-row">
+                <div class="profile-avatar-skeleton"></div>
+                <div class="friend-info flex-column">
+                    <div class="friend-username-skeleton"></div>
+                    <div class="friend-status-skeleton"></div>
+                </div>
+            </div>
+        {/each}
+    </div>
+{:then fData}
             {#if fData.requests.in.content.length > 0}
                 <div class="incoming-friends flex-column">
                     <span class="friends-title">Входящие заявки</span>
@@ -233,6 +243,13 @@
 {/if}
 
 <style>
+    .friends-skeleton-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-bottom: 40px;
+    }
+
     .friends-page {
         height: 100%;
         margin: 40px 60px;
