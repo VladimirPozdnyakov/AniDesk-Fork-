@@ -26,6 +26,19 @@
           });
 
     let updateInfo = false;
+    let timeout, searchBoxElement;
+    let isSearching = false;
+    let filterQuery = "";
+
+    function getFilteredData(data, query) {
+        if (!data) return [];
+        if (!query) return data;
+        const lowerQuery = query.toLowerCase();
+        return data.filter(anime => {
+            const title = anime.title_ru?.toLowerCase() || anime.title?.toLowerCase() || "";
+            return title.includes(lowerQuery);
+        });
+    }
 
     async function getMainPage() {
         let data;
@@ -64,6 +77,7 @@
         args.typeBookmark = type;
         page = 0;
         allData = [];
+        filterQuery = "";
         switch (type) {
             case 0:
                 firstData = anixApi.profile.getFavorites({
@@ -102,6 +116,19 @@
         }
     };
 
+    function inputEvent(e) {
+        filterQuery = e.srcElement.value;
+
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+
+        isSearching = true;
+        timeout = setTimeout(() => {
+            isSearching = false;
+        }, 400);
+    }
+
     if (args?.isModal) {
         waitForElm(".releases-container.modal-content").then((elem) => {
             elem.addEventListener("scroll", scrollEvent);
@@ -116,6 +143,18 @@
 {#if !anixApi.client.token && !args?.isModal}
     <AuthPlaceholder />
 {:else}
+    <div class="search-top-div flex-row">
+        <div class="search-box flex-row" class:searching={isSearching}>
+            <input
+                bind:this={searchBoxElement}
+                class="search-box-text"
+                oninput={inputEvent}
+                type="text"
+                placeholder="Поиск по закладкам..."
+                value={filterQuery}
+            />
+        </div>
+    </div>
     <div
         class="releases-type flex-row"
         tabindex="-1"
@@ -190,10 +229,10 @@
         {:then Releases}
             {setTotalCount(Releases.total_count)}
             {setFirstDataCount(Releases.content.length)}
-            {#each Releases.content as Release}
+            {#each getFilteredData(Releases.content, filterQuery) as Release}
                 <AnimeRowItem anime={Release} inModal={args?.isModal} />
             {/each}
-            {#each allData as Release}
+            {#each getFilteredData(allData, filterQuery) as Release}
                 <AnimeRowItem anime={Release} inModal={args?.isModal} />
             {/each}
         {/await}
@@ -201,6 +240,41 @@
 {/if}
 
 <style>
+    .search-box {
+        border-radius: 30px;
+        padding: 0 15px;
+        border-color: var(--secondary-text-color);
+        border-style: solid;
+        background-color: var(--alt-background-color);
+        margin-top: 10px;
+        width: 70%;
+        border-width: 1px;
+        z-index: 20;
+        transition: border-color 0.3s;
+    }
+
+    .search-box.searching {
+        border-color: var(--info-color);
+    }
+
+    .search-box-text {
+        height: 35px;
+        width: 100%;
+        background-color: var(--alt-background-color);
+        border: none;
+        outline: none;
+        color: var(--main-text-color);
+    }
+
+    .search-top-div {
+        justify-content: center;
+        position: sticky;
+        top: 0;
+        background-color: var(--background-color);
+        z-index: 10;
+        padding-bottom: 10px;
+    }
+
     .releases-container {
         width: 100%;
         height: 100%;
