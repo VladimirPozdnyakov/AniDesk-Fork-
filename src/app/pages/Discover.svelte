@@ -1,6 +1,6 @@
 <script>
     import SkeletonAnimeCard from "../components/elements/SkeletonAnimeCard.svelte";
-    import AnimePoster from "../components/release/AnimePoster.svelte";
+    import SkeletonPoster from "../components/elements/SkeletonPoster.svelte";
     import AnimeFullRowCard from "../components/elements/AnimeFullRowCard.svelte";
     import AnimeColumnCard from "../components/elements/AnimeColumnCard.svelte";
     import ViewAllButton from "../components/buttons/ViewAllButton.svelte";
@@ -71,11 +71,17 @@
 
 {#await getDiscover()}
     <div class="skeleton-container">
-        <SkeletonAnimeCard />
-        <SkeletonAnimeCard />
-        <SkeletonAnimeCard />
-        <SkeletonAnimeCard />
-        <SkeletonAnimeCard />
+        <div class="interesting-slider-wrapper">
+            <div class="spacer"></div>
+            <div class="interesting flex-row">
+                <SkeletonPoster />
+                <SkeletonAnimeCard />
+                <SkeletonAnimeCard />
+                <SkeletonAnimeCard />
+                <SkeletonAnimeCard />
+            </div>
+            <div class="spacer"></div>
+        </div>
     </div>
 {:then d}
     <div class="interesting-slider-wrapper">
@@ -304,5 +310,9 @@
         gap: 20px;
         margin: 20px;
         padding-bottom: 25px;
+    }
+
+    .interesting-slider-wrapper {
+        position: relative;
     }
 </style>
