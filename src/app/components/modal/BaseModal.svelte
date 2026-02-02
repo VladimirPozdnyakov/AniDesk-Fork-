@@ -94,7 +94,7 @@
 
     /* Track */
     :global(.modal-content::-webkit-scrollbar-track) {
-        background-color: #1a1919;
+        background-color: var(--alt-background-color);
         border-radius: 10px;
         opacity: 0.01;
     }

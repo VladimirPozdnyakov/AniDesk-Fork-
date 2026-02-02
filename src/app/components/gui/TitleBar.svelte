@@ -126,7 +126,7 @@
     }
 
     .button-title-bar:hover {
-        background-color: #1b1b1b;
+        background-color: var(--alt-background-color);
     }
 
     .button-title-bar {
