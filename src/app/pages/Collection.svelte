@@ -3,6 +3,7 @@
     import AnimeFullRowCard from "../components/elements/AnimeFullRowCard.svelte";
     import { Lottie } from "lottie-svelte";
     import SkeletonAnimeCard from "../components/elements/SkeletonAnimeCard.svelte";
+    import SkeletonCollectionInfo from "../components/elements/SkeletonCollectionInfo.svelte";
     import BaseMainButton from "../components/buttons/BaseMainButton.svelte";
     import Icon from "../components/elements/Icon.svelte";
     import BookmarkIcon from "../icons/favorite.svg";
@@ -83,11 +84,8 @@
 </script>
 
 {#await info}
-    <div class="skeleton-container">
-        <SkeletonAnimeCard />
-        <SkeletonAnimeCard />
-        <SkeletonAnimeCard />
-        <SkeletonAnimeCard />
+    <div class="skeleton-wrapper">
+        <SkeletonCollectionInfo />
     </div>
 {:then c}
     {#key modalSubTitle}
@@ -312,39 +310,12 @@
         margin-top: 15px;
     }
 
-    .skeleton-container {
+    .skeleton-wrapper {
         display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 20px;
-        margin: 20px;
+        margin: 10px 20px 30px 20px;
         padding-bottom: 25px;
-        justify-content: center;
-    }
-
-    .bookmark-btn {
-        padding: 10px;
-        gap: 5px;
-        font-weight: 600;
-    }
-
-    .lottie-badge {
-        height: 20px;
-        width: 20px;
-    }
-
-    .collection-releases {
-        max-width: 90%;
-        min-width: 75%;
-    }
-
-    .releases-container {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-
-    .verified {
-        display: flex;
-        align-content: center;
     }
 </style>
