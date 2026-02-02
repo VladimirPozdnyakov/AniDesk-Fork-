@@ -2,11 +2,29 @@
     import AnimePoster from "../release/AnimePoster.svelte";
     import Dot from "./Dot.svelte";
     export let inModal = false;
-
+    
     export let anime;
+
+    function handleClick() {
+        updateViewportComponent(8, { id: anime.id });
+    }
+
+    function handleKeydown(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleClick();
+        }
+    }
 </script>
 
-<anime-full-row-card class="flex-row" onclick={() => updateViewportComponent(8, { id: anime.id })}>
+<anime-full-row-card 
+    class="flex-row" 
+    onclick={handleClick}
+    onkeydown={handleKeydown}
+    tabindex="0"
+    role="button"
+    aria-label={`Перейти к ${anime.title_ru || anime.title}`}
+>
     <div class="full-row-anime-poster">
         <AnimePoster size={{ width: 140, height: 205 }} zIndex={inModal ? 2 : 0} posterInfo={{poster: anime.image, title: anime.title}} shadow={true} borderRadius={20} posterStyle={anime.profile_list_status ?? 0}/>
     </div>
@@ -24,10 +42,24 @@
         margin-bottom: 20px;
         margin-top: 20px;
         margin-right: 20px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        border-radius: 20px;
+        padding: 15px;
+        cursor: pointer;
     }
 
     anime-full-row-card:hover {
-        cursor: pointer;
+        transform: scale(1.02);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        background-color: var(--alt-background-color);
+    }
+
+    anime-full-row-card:focus-visible {
+        transform: scale(1.02);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        background-color: var(--alt-background-color);
+        outline: 2px solid var(--main-text-color);
+        outline-offset: 2px;
     }
 
     .anime-item-title {
@@ -36,7 +68,7 @@
         color: var(--main-text-color);
         margin-bottom: 5px;
     }
-
+    
     .anime-item-epCount {
         font-size: var(--anime-full-row-epCount-size);
         color: var(--third-text-color);
@@ -44,16 +76,16 @@
         margin-bottom: 10px;
         align-items: center;
     }
-
+    
     :global(.dot) {
         margin-left: 5px;
         margin-right: 5px;
     }
-
+    
     .full-row-anime-poster {
         margin-right: 25px;
     }
-
+    
     .anime-item-description {
         font-size: var(--anime-full-row-description-size);
         color: var(--third-text-color);
