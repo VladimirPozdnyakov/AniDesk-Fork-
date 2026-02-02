@@ -132,6 +132,7 @@
             argsComponent = {{
                 typeReleases: 0
             }}
+            title="Главная"
         />
         <LeftMenuButton
             icon={BookmarkIcon}
@@ -141,21 +142,25 @@
                 typeBookmark: 0,
                 sort: 1
             }}
+            title="Закладки"
         />
         <LeftMenuButton
             icon={FriendsIcon}
             selected={viewportComponent == views[2]}
             viewportComponentIndex={2}
+            title="Друзья"
         />
         <LeftMenuButton
             icon={CollectionIcon}
             selected={viewportComponent == views[3]}
             viewportComponentIndex={3}
+            title="Коллекции"
         />
         <LeftMenuButton
             icon={DiscoverIcon}
             selected={viewportComponent == views[4]}
             viewportComponentIndex={4}
+            title="Открытия"
         />
         <LeftMenuButton
             icon={SearchIcon}
@@ -164,6 +169,7 @@
             argsComponent={{
                 query: null
             }}
+            title="Поиск"
         />
     </div>
     <div class="bottom-menu-content">
@@ -171,11 +177,13 @@
             icon={nCount > 0 ? NotifiactionAvaliable : NotificationIcon}
             modalComponent={Notifications}
             type="modal"
+            title="Уведомления"
         />
         <LeftMenuButton
             icon={SettingsIcon}
             selected={viewportComponent == views[7]}
             viewportComponentIndex={7}
+            title="Настройки"
         />
     </div>
 </div>
