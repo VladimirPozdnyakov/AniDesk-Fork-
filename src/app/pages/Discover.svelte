@@ -1,6 +1,8 @@
 <script>
     import SkeletonAnimeCard from "../components/elements/SkeletonAnimeCard.svelte";
     import SkeletonPoster from "../components/elements/SkeletonPoster.svelte";
+    import SkeletonColumnCard from "../components/elements/SkeletonColumnCard.svelte";
+    import SkeletonComment from "../components/elements/SkeletonComment.svelte";
     import AnimeFullRowCard from "../components/elements/AnimeFullRowCard.svelte";
     import AnimeColumnCard from "../components/elements/AnimeColumnCard.svelte";
     import ViewAllButton from "../components/buttons/ViewAllButton.svelte";
@@ -75,12 +77,32 @@
             <div class="spacer"></div>
             <div class="interesting flex-row">
                 <SkeletonPoster />
-                <SkeletonAnimeCard />
-                <SkeletonAnimeCard />
-                <SkeletonAnimeCard />
-                <SkeletonAnimeCard />
             </div>
             <div class="spacer"></div>
+        </div>
+        <div class="discussing">
+            <span class="main-title title-margin">Обсуждаемое сегодня</span>
+            <SkeletonAnimeCard />
+            <SkeletonAnimeCard />
+            <SkeletonAnimeCard />
+        </div>
+        <div class="anime-column-row">
+            <div class="current-view flex-row">
+                <span class="main-title">Сейчас смотрят</span>
+            </div>
+            <div class="anime-row flex-row">
+                <SkeletonColumnCard />
+                <SkeletonColumnCard />
+                <SkeletonColumnCard />
+                <SkeletonColumnCard />
+                <SkeletonColumnCard />
+            </div>
+        </div>
+        <div class="popular-comments">
+            <span class="main-title title-margin">Комментарии недели</span>
+            <SkeletonComment />
+            <SkeletonComment />
+            <SkeletonComment />
         </div>
     </div>
 {:then d}
