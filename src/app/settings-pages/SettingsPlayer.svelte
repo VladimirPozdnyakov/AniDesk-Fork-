@@ -4,6 +4,7 @@
     import DropdownElement from "../components/settings/DropdownElement.svelte";
     import HotkeyElement from "../components/settings/HotkeyElement.svelte";
     import TextboxParam from "../components/settings/TextboxElement.svelte";
+    import SliderElement from "../components/settings/SliderElement.svelte";
     import TitleElement from "../components/settings/TitleElement.svelte";
     import { localStorageWritable } from "@babichjacob/svelte-localstorage";
 
@@ -62,32 +63,30 @@
                 lastValue: playerSettings.saveUserVolume.lastValue,
             })}
     />
-    <TextboxParam
+    <SliderElement
         title="Громкость по умолчанию"
+        description="Устанавливает начальный уровень громкости плеера."
         value={playerSettings.defaultVolume}
-        placeholder="100"
-        type="number"
-        suffix="%"
         min="1"
         max="100"
-        onChangeCallback={(e) =>
-            updateKey("defaultVolume", Number(e.target.value))}
+        step="1"
+        suffix="%"
+        onChangeCallback={(e) => updateKey("defaultVolume", e.target.value)}
     />
 
     <Separator width="75%" />
 
     <TitleElement title="Интерфейс" />
 
-    <TextboxParam
+    <SliderElement
         title="Непрозрачность интерфейса"
+        description="Определяет прозрачность интерфейса плеера."
         value={playerSettings.opacityInterface}
-        placeholder="50"
-        type="number"
-        suffix="%"
         min="1"
         max="90"
-        onChangeCallback={(e) =>
-            updateKey("opacityInterface", Number(e.target.value))}
+        step="1"
+        suffix="%"
+        onChangeCallback={(e) => updateKey("opacityInterface", e.target.value)}
     />
     <TextboxParam
         title="Время скрытия интерфейса"
