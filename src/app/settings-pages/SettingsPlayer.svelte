@@ -48,6 +48,13 @@
         placeholder="Выберите соотношение"
         onChangeCallback={(e, v) => updateKey("defaultAspectRatio", v)}
     />
+    <DropdownElement
+        title="Скорость воспроизведения по умолчанию"
+        values={utils.playerSpeedValues}
+        value={playerSettings.defaultPlaybackSpeed}
+        placeholder="Выберите скорость"
+        onChangeCallback={(e, v) => updateKey("defaultPlaybackSpeed", v)}
+    />
 
     <Separator width="75%" />
 

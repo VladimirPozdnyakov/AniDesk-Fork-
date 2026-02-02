@@ -375,6 +375,8 @@
               playerSettings.defaultVolume / 100)
             : playerSettings.defaultVolume / 100;
 
+        video.playbackRate = playerSettings.defaultPlaybackSpeed ?? 1.0;
+
         volControl = await waitForElm("#volume-position");
 
         volControl.value = video.volume;
