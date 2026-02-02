@@ -80,28 +80,30 @@
             </div>
             <div class="spacer"></div>
         </div>
-        <div class="discussing">
-            <span class="main-title title-margin">Обсуждаемое сегодня</span>
-            <SkeletonAnimeCard />
-            <SkeletonAnimeCard />
-            <SkeletonAnimeCard />
-        </div>
-        <div class="anime-column-row">
-            <div class="current-view flex-row">
-                <span class="main-title">Сейчас смотрят</span>
+        <div class="container flex-column">
+            <div class="discussing">
+                <span class="main-title title-margin">Обсуждаемое сегодня</span>
+                <SkeletonAnimeCard />
+                <SkeletonAnimeCard />
+                <SkeletonAnimeCard />
             </div>
-            <div class="anime-row flex-row">
-                <SkeletonColumnCard />
-                <SkeletonColumnCard />
-                <SkeletonColumnCard />
-                <SkeletonColumnCard />
+            <div class="anime-column-row">
+                <div class="current-view flex-row">
+                    <span class="main-title">Сейчас смотрят</span>
+                </div>
+                <div class="anime-row flex-row">
+                    <SkeletonColumnCard />
+                    <SkeletonColumnCard />
+                    <SkeletonColumnCard />
+                    <SkeletonColumnCard />
+                </div>
             </div>
-        </div>
-        <div class="popular-comments">
-            <span class="main-title title-margin">Комментарии недели</span>
-            <SkeletonComment />
-            <SkeletonComment />
-            <SkeletonComment />
+            <div class="popular-comments">
+                <span class="main-title title-margin">Комментарии недели</span>
+                <SkeletonComment />
+                <SkeletonComment />
+                <SkeletonComment />
+            </div>
         </div>
     </div>
 {:then d}
