@@ -71,7 +71,7 @@
             {lastError}
         </div>
     {/if}
-    <div class="login-form">
+    <form class="login-form" on:submit|preventDefault={login}>
         <div class="login-form-title">С возвращением</div>
         <div class="login-form-input">
             <div class="login-form-input-label">Логин</div>
@@ -88,11 +88,11 @@
                 borderRadius={6}
                 height={30}
                 isLoading={waitLogin}
-                onClickCallback={async () => await login()}
+                type="submit"
                 >Войти</BaseMainButton
             >
         </div>
-    </div>
+    </form>
 </div>
 
 <style>
