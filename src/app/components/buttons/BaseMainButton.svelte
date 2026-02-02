@@ -81,4 +81,8 @@
             transform: rotate(360deg);
         }
     }
+
+    .base-main-button:focus-visible {
+        box-shadow: 0 0 0 2px var(--main-text-color);
+    }
 </style>

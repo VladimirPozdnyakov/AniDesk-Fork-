@@ -41,4 +41,8 @@
     .selected:hover {
         background-color: var(--background-color);
     }
+
+    .left-menu-button:focus-visible {
+        box-shadow: 0 0 0 2px var(--main-text-color);
+    }
 </style>
