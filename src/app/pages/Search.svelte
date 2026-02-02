@@ -1,6 +1,7 @@
 <script>
     import AnimeFullRowCard from "../components/elements/AnimeFullRowCard.svelte";
     import Preloader from "../components/gui/Preloader.svelte";
+    import SkeletonAnimeCard from "../components/elements/SkeletonAnimeCard.svelte";
     import BaseModal from "../components/modal/BaseModal.svelte";
     import RelatedModal from "../components/search/RelatedModal.svelte";
     import MetaInfo from "../components/gui/MetaInfo.svelte";
@@ -54,7 +55,13 @@
 </div>
 <div class="result-content flex-column">
     {#await firstData}
-        <Preloader />
+        <div class="skeleton-container">
+            <SkeletonAnimeCard />
+            <SkeletonAnimeCard />
+            <SkeletonAnimeCard />
+            <SkeletonAnimeCard />
+            <SkeletonAnimeCard />
+        </div>
     {:then data}
         {#key relatedModalSubTitle}
             <MetaInfo
@@ -241,5 +248,10 @@
 
     .result-content {
         height: 100%;
+    }
+
+    .skeleton-container {
+        display: flex;
+        flex-direction: column;
     }
 </style>

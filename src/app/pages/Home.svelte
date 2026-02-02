@@ -2,6 +2,7 @@
     import AnimeRowItem from "../components/elements/AnimeFullRowCard.svelte";
     import MetaInfo from "../components/gui/MetaInfo.svelte";
     import Preloader from "../components/gui/Preloader.svelte";
+    import SkeletonAnimeCard from "../components/elements/SkeletonAnimeCard.svelte";
 
     export let args;
     let page = 0;
@@ -95,9 +96,15 @@
         onclick={() => setReleasesType(4)}>Фильмы</button
     >
 </div>
-<div class="releases-container flex-column">
+ <div class="releases-container flex-column">
     {#await firstData}
-        <Preloader />
+        <div class="skeleton-container">
+            <SkeletonAnimeCard />
+            <SkeletonAnimeCard />
+            <SkeletonAnimeCard />
+            <SkeletonAnimeCard />
+            <SkeletonAnimeCard />
+        </div>
     {:then Releases}
         {#each Releases.content as Release}
             <AnimeRowItem anime={Release} />
@@ -106,7 +113,7 @@
             <AnimeRowItem anime={Release} />
         {/each}
     {/await}
-</div>
+ </div>
 
 <style>
     .releases-container {
@@ -183,5 +190,10 @@
             width: 100%; /* Линия полностью растянута */
             left: 0;
         }
+    }
+
+    .skeleton-container {
+        display: flex;
+        flex-direction: column;
     }
 </style>
