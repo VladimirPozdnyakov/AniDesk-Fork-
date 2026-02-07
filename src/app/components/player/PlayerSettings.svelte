@@ -57,6 +57,12 @@
                         onClickCallback={(value) => changeUpscale(value)}
                     />
                 </div>
+                {#if !avaliableGPU}
+                    <div class="gpu-hint">
+                        <span>AMD/Linux: запустите с флагами</span>
+                        <code>--no-sandbox --enable-unsafe-webgpu --ozone-platform=x11 --use-angle=vulkan --enable-features=Vulkan,VulkanFromANGLE</code>
+                    </div>
+                {/if}
                 <button
                     class="player-settings-element"
                     disabled={!avaliableGPU || !currentSettings.upscaleEnabled}
@@ -281,5 +287,24 @@
         white-space: normal;
         text-align: left;
         line-height: 1.3;
+    }
+
+    .gpu-hint {
+        padding: 8px 15px;
+        font-size: 11px;
+        color: var(--secondary-text-color);
+        line-height: 1.4;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .gpu-hint code {
+        font-size: 10px;
+        background-color: var(--alt-background-color);
+        padding: 4px 6px;
+        border-radius: 4px;
+        word-break: break-all;
+        user-select: all;
     }
 </style>
