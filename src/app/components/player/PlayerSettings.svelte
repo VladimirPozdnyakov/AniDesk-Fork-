@@ -8,6 +8,7 @@
     export let isShow;
     export let changeQuality;
     export let changeUpscale;
+    export let changeUpscaleMode;
     export let changeAspectRatio;
     export let video;
 
@@ -56,6 +57,18 @@
                         onClickCallback={(value) => changeUpscale(value)}
                     />
                 </div>
+                <button
+                    class="player-settings-element"
+                    disabled={!avaliableGPU || !currentSettings.upscaleEnabled}
+                    class:disabled={!avaliableGPU || !currentSettings.upscaleEnabled}
+                    onclick={() => {
+                        transitionDirection = 1;
+                        page = 4;
+                    }}
+                >
+                    <span class="btn-title">Режим улучшения:</span>
+                    <span>{utils.upscaleValues.find((x) => x.value == upscaleSettings.mode)?.label ?? "Неизвестно"} →</span>
+                </button>
                 <button
                     class="player-settings-element"
                     onclick={() => {
@@ -159,6 +172,34 @@
                         onclick={() => {
                             transitionDirection = -1;
                             video.playbackRate = option.value;
+                            page = 0;
+                        }}
+                    >
+                        {option.label}
+                    </button>
+                {/each}
+            </div>
+        {:else if page === 4}
+            <div
+                class="page"
+                in:fly={{ x: 300 * transitionDirection, duration: 250 }}
+                out:fly={{ x: -300 * transitionDirection, duration: 250 }}
+            >
+                <button
+                    class="player-settings-element back"
+                    onclick={() => {
+                        transitionDirection = -1;
+                        page = 0;
+                    }}
+                >
+                    ← Назад
+                </button>
+                {#each utils.upscaleValues as option}
+                    <button
+                        class="player-settings-element"
+                        onclick={() => {
+                            transitionDirection = -1;
+                            changeUpscaleMode(option.value);
                             page = 0;
                         }}
                     >

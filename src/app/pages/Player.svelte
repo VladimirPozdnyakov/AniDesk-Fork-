@@ -116,6 +116,12 @@
         await renderUpscale();
     }
 
+    async function changeUpscaleMode(mode) {
+        upscaleSettings.mode = mode;
+        upscaleSettingsRaw.set(upscaleSettings);
+        await renderUpscale();
+    }
+
     //aspect-16-9
     //aspect-4-3
     //aspect-fit
@@ -672,6 +678,7 @@
         transparentPercent={playerSettings.opacityInterface}
         {changeQuality}
         {changeUpscale}
+        {changeUpscaleMode}
         {upscaleEnabled}
         {changeAspectRatio}
         aspectRatio={utils.aspectRatioValues.find(

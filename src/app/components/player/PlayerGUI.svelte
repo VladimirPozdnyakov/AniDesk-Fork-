@@ -19,6 +19,7 @@
     export let transparentPercent = 50;
     export let changeQuality;
     export let changeUpscale;
+    export let changeUpscaleMode;
     export let upscaleEnabled;
     export let changeAspectRatio;
     export let aspectRatio;
@@ -313,6 +314,7 @@
             }}
             {changeQuality}
             {changeUpscale}
+            {changeUpscaleMode}
             {changeAspectRatio}
             {video}
         />
