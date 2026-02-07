@@ -194,18 +194,23 @@
                 >
                     ← Назад
                 </button>
-                {#each utils.upscaleValues as option}
-                    <button
-                        class="player-settings-element"
-                        onclick={() => {
-                            transitionDirection = -1;
-                            changeUpscaleMode(option.value);
-                            page = 0;
-                        }}
-                    >
-                        {option.label}
-                    </button>
-                {/each}
+                <div class="upscale-list">
+                    {#each utils.upscaleValues as option}
+                        <button
+                            class="player-settings-element upscale-option"
+                            onclick={() => {
+                                transitionDirection = -1;
+                                upscaleSettings.mode = option.value;
+                                upscaleSettings = upscaleSettings;
+                                changeUpscaleMode(option.value);
+                                page = 0;
+                            }}
+                        >
+                            <span class="upscale-label">{option.label}</span>
+                            <span class="upscale-description">{option.description}</span>
+                        </button>
+                    {/each}
+                </div>
             </div>
         {/if}
     </div>
@@ -251,5 +256,30 @@
 
     .player-settings-element:hover {
         background-color: var(--alt-background-color);
+    }
+
+    .upscale-list {
+        max-height: 50vh;
+        overflow-y: auto;
+    }
+
+    .upscale-option {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 8px 15px;
+    }
+
+    .upscale-label {
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    .upscale-description {
+        font-size: 11px;
+        color: var(--secondary-text-color);
+        white-space: normal;
+        text-align: left;
+        line-height: 1.3;
     }
 </style>
