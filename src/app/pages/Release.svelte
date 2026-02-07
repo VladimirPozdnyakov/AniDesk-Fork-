@@ -1,6 +1,6 @@
 <script>
     import LeftReleaseBaseButton from "../components/buttons/LeftReleaseBaseButton.svelte";
-    import Preloader from "../components/gui/Preloader.svelte";
+    import SkeletonRelease from "../components/elements/SkeletonRelease.svelte";
     import RatingGraph from "../components/release/RatingGraph.svelte";
     import BookmarkTypes from "../components/elements/BookmarkTypes.svelte";
     import CommentItem from "../components/elements/CommentItem.svelte";
@@ -86,7 +86,7 @@
 </script>
 
 {#await release}
-    <Preloader />
+    <SkeletonRelease />
 {:then r}
     {#if r.release == null || r.code == 2}
         <NotFound />

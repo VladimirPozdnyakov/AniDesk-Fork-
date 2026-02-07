@@ -1,7 +1,7 @@
 <script>
     export let args;
 
-    import Preloader from "../components/gui/Preloader.svelte";
+    import SkeletonProfile from "../components/elements/SkeletonProfile.svelte";
     import BookmarkTypes from "../components/elements/BookmarkTypes.svelte";
     import WatchDynamic from "../components/profile/WatchDynamic.svelte";
     import ViewAllButton from "../components/buttons/ViewAllButton.svelte";
@@ -45,7 +45,7 @@
 </script>
 
 {#await profile}
-    <Preloader />
+    <SkeletonProfile />
 {:then p}
 {#key modalSubTitle}
 <MetaInfo subTitle={`${modalSubTitle ? `${modalSubTitle} | ` : ``}Профиль ${p.profileInfo.profile.login}`} />

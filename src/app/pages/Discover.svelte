@@ -3,6 +3,7 @@
     import SkeletonPoster from "../components/elements/SkeletonPoster.svelte";
     import SkeletonColumnCard from "../components/elements/SkeletonColumnCard.svelte";
     import SkeletonComment from "../components/elements/SkeletonComment.svelte";
+    import AnimePoster from "../components/release/AnimePoster.svelte";
     import AnimeFullRowCard from "../components/elements/AnimeFullRowCard.svelte";
     import AnimeColumnCard from "../components/elements/AnimeColumnCard.svelte";
     import ViewAllButton from "../components/buttons/ViewAllButton.svelte";

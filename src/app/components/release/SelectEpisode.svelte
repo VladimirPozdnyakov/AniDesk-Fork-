@@ -1,5 +1,4 @@
 <script>
-    import Preloader from "../gui/Preloader.svelte";
     import { createEventDispatcher } from "svelte";
     import { AniLibriaParser, KodikParser } from "anixartjs";
     import { localStorageWritable } from "@babichjacob/svelte-localstorage";
@@ -142,8 +141,10 @@
     {#key currentSourceId}
         {#if episodes}
             {#await episodes}
-                <div class="center">
-                    <Preloader />
+                <div class="skeleton-episodes">
+                    {#each {length: 10} as _}
+                        <div class="skeleton-episode skeleton"></div>
+                    {/each}
                 </div>
             {:then i}
                 {#each i.episodes as d}
@@ -219,8 +220,10 @@
                 {/each}
             {/await}
         {:else}
-            <div class="center">
-                <Preloader />
+            <div class="skeleton-episodes">
+                {#each {length: 10} as _}
+                    <div class="skeleton-episode skeleton"></div>
+                {/each}
             </div>
         {/if}
     {/key}
@@ -274,5 +277,19 @@
         margin-left: auto;
         margin-right: 0;
         justify-items: center;
+    }
+
+    .skeleton-episodes {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 0 40px;
+    }
+
+    .skeleton-episode {
+        height: 40px;
+        min-height: 40px;
+        width: 100%;
+        border-radius: 7px;
     }
 </style>

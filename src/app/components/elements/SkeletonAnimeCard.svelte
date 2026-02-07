@@ -1,12 +1,12 @@
 <div class="skeleton-anime-card">
-    <div class="skeleton-poster"></div>
+    <div class="skeleton-poster skeleton"></div>
     <div class="skeleton-info">
-        <div class="skeleton-title"></div>
-        <div class="skeleton-episodes"></div>
+        <div class="skeleton-title skeleton"></div>
+        <div class="skeleton-episodes skeleton"></div>
         <div class="skeleton-description">
-            <div class="skeleton-line medium"></div>
-            <div class="skeleton-line long"></div>
-            <div class="skeleton-line short"></div>
+            <div class="skeleton-line medium skeleton"></div>
+            <div class="skeleton-line long skeleton"></div>
+            <div class="skeleton-line short skeleton"></div>
         </div>
     </div>
 </div>
@@ -28,8 +28,6 @@
         width: 140px;
         height: 205px;
         border-radius: 20px;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 1.5s ease-in-out infinite;
         margin-right: 25px;
         flex-shrink: 0;
     }
@@ -43,8 +41,6 @@
     .skeleton-title {
         height: 24px;
         width: 60%;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 1.5s ease-in-out infinite;
         border-radius: 4px;
         margin-bottom: 12px;
     }
@@ -52,8 +48,6 @@
     .skeleton-episodes {
         height: 18px;
         width: 30%;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 1.5s ease-in-out infinite;
         border-radius: 4px;
         margin-bottom: 10px;
     }
@@ -66,8 +60,6 @@
 
     .skeleton-line {
         height: 14px;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 1.5s ease-in-out infinite;
         border-radius: 4px;
     }
 
@@ -81,19 +73,5 @@
 
     .skeleton-line.long {
         width: 100%;
-    }
-
-    @keyframes skeletonAnimation {
-        0% {
-            background-color: var(--skeleton-background-color);
-        }
-
-        50% {
-            background-color: var(--skeleton-animation-color);
-        }
-
-        100% {
-            background-color: var(--skeleton-background-color);
-        }
     }
 </style>

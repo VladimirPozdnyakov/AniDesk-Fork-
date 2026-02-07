@@ -12,7 +12,7 @@
 </script>
 
 <div class="profile-avatar" class:avatar-online={isOnline} style="--outline-width: {outlineWidth}px; --width: {size.width}px; --height: {size.height}px; --z-index: {skeletonZIndex}">
-    <div class="avatar-skeleton" class:hide={isLoaded}></div>
+    <div class="avatar-skeleton skeleton skeleton-fade" class:skeleton-hidden={isLoaded}></div>
     <img src="{src}" alt="{alt ?? "Avatar"}" onload={() => (isLoaded = true)} width="{size.width}px" height="{size.height}px" />
 </div>
 
@@ -43,7 +43,5 @@
         height: calc(var(--height) + 2px);
         position: absolute;
         border-radius: 100%;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 3s ease-in-out 100ms infinite forwards;
     }
 </style>

@@ -62,7 +62,7 @@
     >
         {style.text}
     </div>
-    <div class="anime-poster-skeleton" class:hide={!isLoading}></div>
+    <div class="anime-poster-skeleton skeleton skeleton-fade" class:skeleton-hidden={!isLoading}></div>
     <img
         class:anime-poster-shadow={shadow}
         width={size.width}
@@ -90,10 +90,8 @@
         width: var(--width);
         height: var(--height);
         border-radius: var(--border-radius);
-        background-color: var(--skeleton-background-color);
         position: absolute;
         z-index: calc(var(--z-index) - 1);
-        animation: skeletonAnimation 3s ease-in-out 100ms infinite forwards;
     }
 
     .anime-poster {

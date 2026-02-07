@@ -9,6 +9,7 @@ bundle.js.map
 mpv/
 package-lock.json
 .auto-claude/
+.claude/
 
 # Auto Claude generated files
 .auto-claude-security.json

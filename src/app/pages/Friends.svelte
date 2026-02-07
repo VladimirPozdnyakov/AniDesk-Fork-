@@ -170,10 +170,11 @@
 
 {#snippet friendCardSkeleton()}
     <div class="friend-skeleton flex-row">
-        <div class="profile-avatar-skeleton"></div>
+        <div class="profile-avatar-skeleton skeleton"></div>
         <div class="friend-info flex-column">
-            <div class="friend-username-skeleton"></div>
-            <div class="friend-status-skeleton"></div>
+            <div class="friend-username-skeleton skeleton"></div>
+            <div class="friend-count-skeleton skeleton"></div>
+            <div class="friend-status-skeleton skeleton"></div>
         </div>
     </div>
 {/snippet}
@@ -186,10 +187,11 @@
     <div class="friends-skeleton-container">
         {#each {length: 4} as _}
             <div class="friend-skeleton flex-row">
-                <div class="profile-avatar-skeleton"></div>
+                <div class="profile-avatar-skeleton skeleton"></div>
                 <div class="friend-info flex-column">
-                    <div class="friend-username-skeleton"></div>
-                    <div class="friend-status-skeleton"></div>
+                    <div class="friend-username-skeleton skeleton"></div>
+                    <div class="friend-count-skeleton skeleton"></div>
+                    <div class="friend-status-skeleton skeleton"></div>
                 </div>
             </div>
         {/each}
@@ -285,25 +287,26 @@
         width: 100px;
         height: 20px;
         border-radius: 5px;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 3s ease-in-out 100ms infinite forwards;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
+    }
+
+    .friend-count-skeleton {
+        width: 80px;
+        height: 14px;
+        border-radius: 6px;
+        margin-bottom: 3px;
     }
 
     .friend-status-skeleton {
         width: 150px;
         height: 14px;
         border-radius: 5px;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 3s ease-in-out 100ms infinite forwards;
     }
 
     .profile-avatar-skeleton {
         width: 108px;
         height: 108px;
-        border-radius: 108%;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 3s ease-in-out 100ms infinite forwards;
+        border-radius: 100%;
     }
 
     .friend-status {

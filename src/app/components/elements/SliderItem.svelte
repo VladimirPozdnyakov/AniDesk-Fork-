@@ -19,7 +19,7 @@
     class="slider-item"
     style="--width: {size.width}px; --height: {size.height}px;"
 >
-    <div class="slider-item-skeleton" class:hide={isLoaded}></div>
+    <div class="slider-item-skeleton skeleton skeleton-fade" class:skeleton-hidden={isLoaded}></div>
     <img onload={onImgLoad} height={size.height} {src} alt={alt ?? "Item"} id={id} />
 </div>
 
@@ -35,10 +35,8 @@
         width: var(--width);
         height: var(--height);
         border-radius: 13px;
-        background-color: var(--skeleton-background-color);
         position: absolute;
         z-index: var(--z-index);
-        animation: skeletonAnimation 3s ease-in-out 100ms infinite forwards;
     }
 
     .slider-item img {

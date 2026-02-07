@@ -1,27 +1,23 @@
 <div class="skeleton-collection-wrapper">
-    <div class="skeleton-cover"></div>
+    <div class="skeleton-cover skeleton"></div>
     <div class="skeleton-author-section">
-        <div class="skeleton-avatar"></div>
+        <div class="skeleton-author-left flex-row">
+            <div class="skeleton-avatar skeleton"></div>
+            <div class="skeleton-author-name skeleton"></div>
+        </div>
         <div class="skeleton-dates">
-            <div class="skeleton-date-line"></div>
-            <div class="skeleton-date-line"></div>
+            <div class="skeleton-date-line skeleton"></div>
+            <div class="skeleton-date-line skeleton"></div>
         </div>
     </div>
     <div class="skeleton-info-center">
-        <div class="skeleton-title"></div>
-        <div class="skeleton-fav-count">
-            <div class="skeleton-fav-icon"></div>
-            <div class="skeleton-fav-number"></div>
-            <div class="skeleton-fav-separator"></div>
-            <div class="skeleton-fav-number"></div>
-        </div>
+        <div class="skeleton-title skeleton"></div>
         <div class="skeleton-buttons">
-            <div class="skeleton-button"></div>
-            <div class="skeleton-button"></div>
+            <div class="skeleton-button skeleton"></div>
         </div>
         <div class="skeleton-description">
-            <div class="skeleton-desc-line medium"></div>
-            <div class="skeleton-desc-line long"></div>
+            <div class="skeleton-desc-line medium skeleton"></div>
+            <div class="skeleton-desc-line long skeleton"></div>
         </div>
     </div>
 </div>
@@ -35,29 +31,38 @@
     }
 
     .skeleton-cover {
-        width: 890px;
-        height: 500px;
+        width: 100%;
+        max-width: 890px;
+        aspect-ratio: 89 / 50;
         border-radius: 15px;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 1.5s ease-in-out infinite;
         flex-shrink: 0;
     }
 
     .skeleton-author-section {
-        width: 880px;
+        width: 100%;
+        max-width: 880px;
         margin-top: 20px;
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
 
+    .skeleton-author-left {
+        align-items: center;
+        gap: 10px;
+    }
+
     .skeleton-avatar {
         width: 40px;
         height: 40px;
-        border-radius: 108%;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 1.5s ease-in-out infinite;
+        border-radius: 100%;
         flex-shrink: 0;
+    }
+
+    .skeleton-author-name {
+        height: 16px;
+        width: 120px;
+        border-radius: 4px;
     }
 
     .skeleton-dates {
@@ -70,54 +75,22 @@
         height: 12px;
         width: 200px;
         border-radius: 4px;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 1.5s ease-in-out infinite;
     }
 
     .skeleton-info-center {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 880px;
+        width: 100%;
+        max-width: 880px;
         gap: 15px;
+        margin-top: 20px;
     }
 
     .skeleton-title {
         height: 30px;
         width: 70%;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 1.5s ease-in-out infinite;
         border-radius: 4px;
-    }
-
-    .skeleton-fav-count {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .skeleton-fav-icon {
-        width: 15px;
-        height: 15px;
-        border-radius: 100%;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 1.5s ease-in-out infinite;
-    }
-
-    .skeleton-fav-number {
-        height: 14px;
-        width: 30px;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 1.5s ease-in-out infinite;
-        border-radius: 4px;
-    }
-
-    .skeleton-fav-separator {
-        width: 4px;
-        height: 4px;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 1.5s ease-in-out infinite;
-        border-radius: 100%;
     }
 
     .skeleton-buttons {
@@ -128,23 +101,21 @@
 
     .skeleton-button {
         height: 40px;
-        width: 120px;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 1.5s ease-in-out infinite;
+        width: 100px;
         border-radius: 10px;
     }
 
     .skeleton-description {
-        width: 880px;
+        width: 100%;
+        max-width: 880px;
         display: flex;
         flex-direction: column;
         gap: 8px;
+        margin-top: 5px;
     }
 
     .skeleton-desc-line {
         height: 14px;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 1.5s ease-in-out infinite;
         border-radius: 4px;
     }
 
@@ -154,19 +125,5 @@
 
     .skeleton-desc-line.long {
         width: 100%;
-    }
-
-    @keyframes skeletonAnimation {
-        0% {
-            background-color: var(--skeleton-background-color);
-        }
-
-        50% {
-            background-color: var(--skeleton-animation-color);
-        }
-
-        100% {
-            background-color: var(--skeleton-background-color);
-        }
     }
 </style>

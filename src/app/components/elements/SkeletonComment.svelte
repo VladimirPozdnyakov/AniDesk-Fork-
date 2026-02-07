@@ -1,19 +1,23 @@
 <div class="skeleton-comment">
     <div class="skeleton-author flex-row">
-        <div class="skeleton-avatar"></div>
-        <div class="skeleton-author-info flex-row">
-            <div class="skeleton-username"></div>
-            <div class="skeleton-badge"></div>
+        <div class="skeleton-avatar skeleton"></div>
+        <div class="skeleton-author-details">
+            <div class="skeleton-author-name flex-row">
+                <div class="skeleton-username skeleton"></div>
+                <div class="skeleton-badge skeleton"></div>
+                <div class="skeleton-rel-label skeleton"></div>
+            </div>
+            <div class="skeleton-release-title skeleton"></div>
         </div>
     </div>
     <div class="skeleton-message">
-        <div class="skeleton-line medium"></div>
-        <div class="skeleton-line long"></div>
-        <div class="skeleton-line medium"></div>
+        <div class="skeleton-line medium skeleton"></div>
+        <div class="skeleton-line long skeleton"></div>
+        <div class="skeleton-line medium skeleton"></div>
     </div>
     <div class="skeleton-footer flex-row">
-        <div class="skeleton-date"></div>
-        <div class="skeleton-vote-count"></div>
+        <div class="skeleton-date skeleton"></div>
+        <div class="skeleton-vote-count skeleton"></div>
     </div>
 </div>
 
@@ -28,7 +32,7 @@
     }
 
     .skeleton-author {
-        align-items: center;
+        align-items: flex-start;
         margin-bottom: 8px;
     }
 
@@ -36,23 +40,25 @@
         width: 40px;
         height: 40px;
         border-radius: 100%;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 1.5s ease-in-out infinite;
         margin-right: 10px;
         flex-shrink: 0;
     }
 
-    .skeleton-author-info {
+    .skeleton-author-details {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        flex: 1;
+    }
+
+    .skeleton-author-name {
         align-items: center;
         gap: 5px;
-        flex: 1;
     }
 
     .skeleton-username {
         height: 16px;
-        width: 150px;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 1.5s ease-in-out infinite;
+        width: 120px;
         border-radius: 4px;
     }
 
@@ -60,8 +66,18 @@
         width: 20px;
         height: 20px;
         border-radius: 4px;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 1.5s ease-in-out infinite;
+    }
+
+    .skeleton-rel-label {
+        height: 12px;
+        width: 55px;
+        border-radius: 4px;
+    }
+
+    .skeleton-release-title {
+        height: 12px;
+        width: 180px;
+        border-radius: 4px;
     }
 
     .skeleton-message {
@@ -74,8 +90,6 @@
 
     .skeleton-line {
         height: 14px;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 1.5s ease-in-out infinite;
         border-radius: 4px;
         width: 100%;
     }
@@ -96,30 +110,12 @@
     .skeleton-date {
         height: 12px;
         width: 80px;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 1.5s ease-in-out infinite;
         border-radius: 4px;
     }
 
     .skeleton-vote-count {
         height: 14px;
         width: 35px;
-        background-color: var(--skeleton-background-color);
-        animation: skeletonAnimation 1.5s ease-in-out infinite;
         border-radius: 5px;
-    }
-
-    @keyframes skeletonAnimation {
-        0% {
-            background-color: var(--skeleton-background-color);
-        }
-
-        50% {
-            background-color: var(--skeleton-animation-color);
-        }
-
-        100% {
-            background-color: var(--skeleton-background-color);
-        }
     }
 </style>
