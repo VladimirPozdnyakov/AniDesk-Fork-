@@ -77,7 +77,7 @@
         currentEpisode,
         startTimestamp;
 
-    let progressPercent, loadedPercent;
+    let progressPercent, loadedPercent, originalAspectRatio = "";
 
     let isHidden, isPaused, isTimePosClick, isFullscreen;
     let pressedKeys = new Set();
@@ -400,6 +400,7 @@
         video.onloadedmetadata = () => {
             loading = true;
             durationTime = utils.returnFormatedTime(video.duration);
+            originalAspectRatio = `${video.videoWidth} / ${video.videoHeight}`;
         };
 
         video.onwaiting = () => {
@@ -692,6 +693,7 @@
     {#if avaliableGPU}
         <canvas
             class="player-canvas {aspectRatio}"
+            style={aspectRatio === 'aspect-original' ? `aspect-ratio: ${originalAspectRatio}; height: auto; max-height: 100%; max-width: 100%; top: 50%; transform: translate(-50%, -50%);` : ''}
             width={screen.width}
             height={screen.height}
         ></canvas>

@@ -14,7 +14,7 @@ module.exports = {
 
     playerDefaultSettings: {
         autoplayEpisode: true,
-        defaultAspectRatio: "16-9",
+        defaultAspectRatio: "original",
         saveUserVolume: {
             enabled: false,
             lastValue: null
@@ -92,6 +92,7 @@ module.exports = {
     ],
 
     aspectRatioValues: [
+        { label: "Оригинал", value: "original" },
         { label: "16:9", value: "16-9" },
         { label: "4:3", value: "4-3" },
         { label: "Fit", value: "fit" },
